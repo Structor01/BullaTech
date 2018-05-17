@@ -1,14 +1,60 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+<ion-header color="darkMenu">
+  <ion-navbar padding color="darkMenu">
+    <ion-row>
+      <ion-col col-2>
+        <ion-title color="light">
+          Prospera Farma
+        </ion-title>
+      </ion-col>
+      <ion-col text-center id="centerNav">
+        <button ion-button small clear color="light">
+          Teste Agora
+        </button>
+        <button ion-button small clear color="light">
+          Analytics
+        </button>
+        <button ion-button small clear color="light">
+          Plataforma
+        </button>
+      </ion-col>
+      <button ion-button round color="light" (click)="toggleMenu()" float-right>
+        Login
+      </button>
+      <button ion-button outline round color="light" float-right>
+        Contato
+      </button>
+    </ion-row>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-menu [content]="content" side="right">
+  <ion-header color="darkMenu" text-center padding>
+    <ion-title>
+      <ion-icon name="md-key"></ion-icon> Login
+    </ion-title>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" floating>Usuário</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Senha</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button padding color="primary" float-right>
+          Entrar
+        </button>
+        <button ion-button padding clear color="secundary" float-right>
+          Não consegue acessar?
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+<ion-content>
+  <h1 text-center>Acompanhe o crescimento da sua farmácia</h1>
+  <h3 text-center>Tenha o controle completo com o Prospera Farma</h3>
 </ion-content>

@@ -1,3 +1,35 @@
 page-home {
+  ion-title {
+    padding-top: .5rem;
+    color: white !important;
+  }
+  ion-header {
+    color: white !important;
+  }
+  .toolbar-title {
+    color: white !important;
+  }
+  ion-content{
+    background: url("/assets/imgs/background04.jpg") center center !important;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: white !important;
+  }
+  #centerNav button {
 
+  }
+  h1 {
+     font-size: 4rem;
+     margin-top: 25rem;
+     color: white;
+     font-weight: bolder;
+     font-family: "Roboto", "Helvetica Neue", sans-serif;
+   }
+
+  ion-menu ion-content {
+    background: rgba(0,0,0,0.3) !important;
+  }
+  ion-menu ion-item {
+    background: lightgrey !important;
+  }
 }
