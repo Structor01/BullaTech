@@ -17,8 +17,11 @@
           Plataforma
         </button>
       </ion-col>
-      <button ion-button round color="light" (click)="toggleMenu()" float-right>
+      <button ion-button round color="light" (click)="toggleMenu()" *ngIf="!isAuthenticated" float-right>
         Login
+      </button>
+      <button ion-button round color="dark" (click)="toggleMenu()" *ngIf="isAuthenticated" float-right>
+        Ir para Plataforma
       </button>
       <button ion-button outline round color="light" float-right>
         Contato
@@ -26,24 +29,25 @@
     </ion-row>
   </ion-navbar>
 </ion-header>
-<ion-menu [content]="content" side="right">
+<ion-menu [content]="content" *ngIf="!isAuthenticated" side="right">
   <ion-header color="darkMenu" text-center padding>
     <ion-title>
       <ion-icon name="md-key"></ion-icon> Login
     </ion-title>
   </ion-header>
   <ion-content>
+    <form #f="ngForm" (ngSubmit)="onSignin(f)">
     <ion-list>
       <ion-item>
-        <ion-label color="primary" floating>Usuário</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-label color="primary" floating>Email</ion-label>
+        <ion-input type="email" ngModel name="email"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label color="primary" floating>Senha</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" ngModel name="psw"></ion-input>
       </ion-item>
       <ion-item>
-        <button ion-button padding color="primary" float-right>
+        <button ion-button padding color="primary" type="submit" float-right>
           Entrar
         </button>
         <button ion-button padding clear color="secundary" float-right>
@@ -51,6 +55,7 @@
         </button>
       </ion-item>
     </ion-list>
+    </form>
   </ion-content>
 </ion-menu>
 <ion-nav id="nav" #content [root]="rootPage"></ion-nav>

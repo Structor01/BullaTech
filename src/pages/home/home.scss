@@ -11,8 +11,9 @@ page-home {
   }
   ion-content{
     background: url("/assets/imgs/background04.jpg") center center !important;
-    -webkit-background-size: cover;
-    background-size: cover;
+    -webkit-background-size: cover !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
     color: white !important;
   }
   #centerNav button {

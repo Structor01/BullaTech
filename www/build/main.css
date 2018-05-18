@@ -27988,7 +27988,8 @@ page-home .toolbar-title {
 
 page-home ion-content {
   background: url("/assets/imgs/background04.jpg") center center !important;
-  background-size: cover;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
   color: white !important;
 }
 

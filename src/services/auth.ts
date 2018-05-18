@@ -1,4 +1,4 @@
-import { firebase } from '@ionic-native/firebase';
+import firebase from 'firebase';
 
 export class AuthService {
     authsignup(email: string, password: string) {
