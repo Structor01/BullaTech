@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onSignin(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" floating>Email</ion-label>
+        <ion-input type="email" ngModel name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Senha</ion-label>
+        <ion-input type="password" ngModel name="psw"></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button padding color="primary" type="submit" full large float-right>
+          Entrar
+        </button>
+        <button ion-button padding clear color="secundary" full float-right>
+          Não consegue acessar?
+        </button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,12 +1,10 @@
-<ion-header color="darkMenu">
-  <ion-navbar padding color="darkMenu">
+<ion-header color="darkMenu" *ngIf="!mobile">
+  <ion-navbar color="darkMenu">
     <ion-row>
-      <ion-col col-2>
-        <ion-title color="light">
-          Prospera Farma
-        </ion-title>
-      </ion-col>
-      <ion-col text-center id="centerNav">
+      <ion-title col>
+        <img width="200" src="assets/imgs/logo.png">
+      </ion-title>
+      <ion-col text-center padding-top col-6 id="centerNav">
         <button ion-button small clear color="light">
           Teste Agora
         </button>
@@ -16,19 +14,25 @@
         <button ion-button small clear color="light">
           Plataforma
         </button>
+        <button ion-button small clear color="light">
+          Contato
+        </button>
       </ion-col>
-      <button ion-button round color="light" (click)="toggleMenu()" *ngIf="!isAuthenticated" float-right>
-        Login
-      </button>
-      <button ion-button round color="dark" (click)="toggleMenu()" *ngIf="isAuthenticated" float-right>
-        Ir para Plataforma
-      </button>
-      <button ion-button outline round color="light" float-right>
-        Contato
-      </button>
+      <ion-col [ngStyle]="{'padding-top':'1.2rem'}">
+        <button ion-button round color="light" (click)="toggleMenu()" *ngIf="!isAuthenticated" float-right>
+          Login
+        </button>
+        <button ion-button round color="light" (click)="openPlatform()" *ngIf="isAuthenticated" float-right>
+          Ir para Plataforma
+        </button>
+      </ion-col>
     </ion-row>
   </ion-navbar>
 </ion-header>
+<ion-header *ngIf="mobile" text-center padding>
+  <img width="75%" margin-top src="assets/imgs/logo.png">
+</ion-header>
+
 <ion-menu [content]="content" *ngIf="!isAuthenticated" side="right">
   <ion-header color="darkMenu" text-center padding>
     <ion-title>
@@ -37,29 +41,40 @@
   </ion-header>
   <ion-content>
     <form #f="ngForm" (ngSubmit)="onSignin(f)">
-    <ion-list>
-      <ion-item>
-        <ion-label color="primary" floating>Email</ion-label>
-        <ion-input type="email" ngModel name="email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label color="primary" floating>Senha</ion-label>
-        <ion-input type="password" ngModel name="psw"></ion-input>
-      </ion-item>
-      <ion-item>
-        <button ion-button padding color="primary" type="submit" float-right>
-          Entrar
-        </button>
-        <button ion-button padding clear color="secundary" float-right>
-          Não consegue acessar?
-        </button>
-      </ion-item>
-    </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label color="primary" floating>Email</ion-label>
+          <ion-input type="email" ngModel name="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating>Senha</ion-label>
+          <ion-input type="password" ngModel name="psw"></ion-input>
+        </ion-item>
+        <ion-item>
+          <button ion-button padding color="primary" type="submit" float-right>
+            Entrar
+          </button>
+          <button ion-button padding clear color="secundary" float-right>
+            Não consegue acessar?
+          </button>
+        </ion-item>
+      </ion-list>
     </form>
   </ion-content>
 </ion-menu>
+
 <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+
 <ion-content>
   <h1 text-center>Acompanhe o crescimento da sua farmácia</h1>
   <h3 text-center>Tenha o controle completo com o Prospera Farma</h3>
 </ion-content>
+
+<ion-footer text-center *ngIf="mobile" padding>
+  <button ion-button round color="light" (click)="mobileMenu()" *ngIf="!isAuthenticated" full>
+    Login
+  </button>
+  <button ion-button round color="dark" full (click)="openPlatform()" *ngIf="isAuthenticated" float-right>
+    Ir para Plataforma
+  </button>
+</ion-footer>

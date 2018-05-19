@@ -19,18 +19,39 @@ page-home {
   #centerNav button {
 
   }
+
   h1 {
-     font-size: 4rem;
-     margin-top: 25rem;
-     color: white;
-     font-weight: bolder;
-     font-family: "Roboto", "Helvetica Neue", sans-serif;
-   }
+    font-size: 4rem;
+    margin-top: 25rem;
+    color: white;
+    font-weight: bolder;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+  }
 
   ion-menu ion-content {
     background: rgba(0,0,0,0.3) !important;
   }
   ion-menu ion-item {
     background: lightgrey !important;
+  }
+
+  @media screen and (orientation:portrait) {
+    h1 {
+      font-size: 3rem;
+      margin-top: 5rem;
+      padding: 1rem;
+      color: white;
+      font-weight: bolder;
+      font-family: "Roboto", "Helvetica Neue", sans-serif;
+    }
+
+    h3 {
+      font-size: 2rem;
+      padding: 1rem;
+    }
+  }
+
+  ion-footer {
+    //background: white !important;
   }
 }

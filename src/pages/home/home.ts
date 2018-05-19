@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import {MenuController, NavController} from 'ionic-angular';
+import {MenuController, NavController, Platform} from 'ionic-angular';
 import { AuthService } from "../../services/auth";
 import {NgForm} from "@angular/forms";
 import firebase from 'firebase';
+import {MobileLoginPage} from "../mobile-login/mobile-login";
 
 @Component({
     selector: 'page-home',
@@ -11,14 +12,24 @@ import firebase from 'firebase';
 export class HomePage {
 
     isAuthenticated;
+    mobile = false;
 
     constructor(
         public navCtrl: NavController,
         public menuCtrl: MenuController,
-        private authService: AuthService) {}
+        private authService: AuthService,
+        public plt: Platform) {
+        if(this.plt.is('mobile')) {
+            this.mobile = true;
+        }
+    }
 
     toggleMenu() {
         this.menuCtrl.toggle();
+    }
+
+    mobileMenu() {
+        this.navCtrl.push(MobileLoginPage);
     }
 
     ionViewDidLoad() {
@@ -33,11 +44,15 @@ export class HomePage {
         });
     }
 
+    openPlatform() {
+       window.location.href = '/platform';
+    }
+
     onSignin(form: NgForm) {
         this.authService.authsignin(form.value.email, form.value.psw)
             .then(
                 data => {
-                    alert('Ok');
+                    this.openPlatform();
                 }
             )
             .catch(error => {
